@@ -4,23 +4,24 @@ import EventListAttendee from './EventListAttendee'
 
 type Props = {
     event: AppEvent
+    selectEvent: (event: AppEvent) => void
 }
 
 
 
-export default function EventListItem({event}:Props) {
+export default function EventListItem({event, selectEvent}:Props) {
   return (
     <SegmentGroup>
       <Segment>
         <ItemGroup>
             <Item>
-                <Item.Image size='tiny' circular src={event.hostPhotoURL} />
+                <Item.Image size='tiny' circular src={event.hostPhotoURL || '/user.png'} />
                 <Item.Content>
                     <Item.Header>
-                        Event Title
+                        {event.title}
                     </Item.Header>
                     <ItemDescription>
-                        Hosted by {event.hostedBy}
+                        {event.hostedBy} {event.hostedBy}
                     </ItemDescription>
                 </Item.Content>
             </Item>
@@ -43,7 +44,12 @@ export default function EventListItem({event}:Props) {
       </Segment>
       <Segment clearing>
         <span>{event.description}</span>
-        <Button color='teal' floated='right' content='view'/>
+        <Button 
+          color='teal' 
+          floated='right' 
+          content='view'
+          onClick={()=> selectEvent(event)}
+          />
       </Segment>
     </SegmentGroup>
   )
