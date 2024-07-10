@@ -1,6 +1,13 @@
 import { Button, Container, Menu, MenuItem } from 'semantic-ui-react'
 
-export default function NavBar() {
+
+type Props ={
+    setFormOpen: (value: boolean) => void;
+}
+
+
+export default function NavBar({setFormOpen}: Props) {
+   
   return (
     <Menu inverted={true} fixed='top'>
         <Container>
@@ -10,7 +17,12 @@ export default function NavBar() {
             </MenuItem>
             <MenuItem name="Events" />
             <MenuItem>
-                <Button floated='right' positive={true} inverted={true} content="create event" />
+                <Button 
+                    onClick={()=>setFormOpen(true)} //So that when someone clicks the button, then the function gets executed. Otherwise the function will get executed straight away, as soon as the page is loaded.
+                    floated='right' 
+                    positive={true} 
+                    inverted={true} 
+                    content="create event" />
             </MenuItem>
             <MenuItem position='right'>
                 <Button basic inverted content='login'/>
