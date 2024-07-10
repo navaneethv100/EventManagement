@@ -1,33 +1,41 @@
+import { NavLink } from 'react-router-dom';
 import { Button, Container, Menu, MenuItem } from 'semantic-ui-react'
+import SingOutButtons from './SingOutButtons';
+import SignedInMenu from './SignedInMenu';
+import { useState } from 'react';
 
 
-type Props ={
-    setFormOpen: (value: boolean) => void;
-}
 
 
-export default function NavBar({setFormOpen}: Props) {
-   
+export default function NavBar() {
+    
+    const [auth, setAuth] = useState(true);
+
+
+    
+
   return (
     <Menu inverted={true} fixed='top'>
         <Container>
-            <MenuItem header>
+            <MenuItem header as ={NavLink} to='/'>
                 <img src="./logo.png" alt="logo" />
                 Event
             </MenuItem>
-            <MenuItem name="Events" />
+            <MenuItem name="Events" as={NavLink} to='/events/' />
             <MenuItem>
                 <Button 
-                    onClick={()=>setFormOpen(true)} //So that when someone clicks the button, then the function gets executed. Otherwise the function will get executed straight away, as soon as the page is loaded.
+                    as={NavLink}
+                    to='/createEvent'
                     floated='right' 
                     positive={true} 
                     inverted={true} 
                     content="create event" />
             </MenuItem>
-            <MenuItem position='right'>
-                <Button basic inverted content='login'/>
-                <Button basic inverted content='Register' style={{marginLeft:'0.5em'}}/>
-            </MenuItem>
+            {
+                auth ? <SignedInMenu setAuth={setAuth} /> : <SingOutButtons setAuth={setAuth} />
+            }
+            <SignedInMenu />
+
         </Container>
     </Menu>
   )
