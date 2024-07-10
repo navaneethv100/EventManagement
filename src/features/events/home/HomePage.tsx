@@ -10,7 +10,7 @@ export default function HomePage() {
           <Image size='massive' src='/logo.png' alt='logo' style={{marginBottom: 12}}/>
           Event Management
         </Header>
-        <Button size='huge' inverted as={Link} to='/event'>
+        <Button size='huge' inverted as={Link} to='/events'>
           Get Started
           <Icon name='caret right' inverted></Icon>
         </Button>

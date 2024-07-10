@@ -1,5 +1,5 @@
-import { AppEvent } from "../../../app/types/Events";
-import EventListItem from "./EventListItem";
+import { AppEvent } from '../../../app/types/Events.ts';
+import EventListItem from './EventListItem';
 
 type Props  = {
   events: AppEvent[]
