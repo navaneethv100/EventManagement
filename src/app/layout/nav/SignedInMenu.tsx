@@ -2,7 +2,6 @@ import { Link, useNavigate } from 'react-router-dom'
 import { Menu, Image, Dropdown } from 'semantic-ui-react'
 import { useAppDispatch, useAppSelector } from '../../store/Store';
 import { signOut } from '../../../features/auth/authSlice';
-import { current } from '@reduxjs/toolkit';
 
 
 export default function SignedInMenu() {
